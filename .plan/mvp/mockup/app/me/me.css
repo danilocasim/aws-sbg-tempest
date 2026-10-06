@@ -1,0 +1,14 @@
+/* /me: the actions live in the page header, where a signed-in member looks first. The form ends with the same Save, not a floating bar. */
+.me{display:flex;flex-direction:column;gap:2rem;max-width:880px;margin:0 auto}
+.me-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem 2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--divider)}
+.me-head .who{display:flex;flex-direction:column;gap:.5rem;max-width:560px}
+.me-head .signed{font-size:var(--fs-small);color:var(--fg-faint)}
+.me-head .signed .mono{color:var(--fg-muted)}
+.me-head p.lead{font-size:var(--fs-lead);color:var(--fg-muted)}
+.me-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem}
+.me-actions .status{margin-right:.25rem}
+.me-url{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;font-size:var(--fs-small);color:var(--fg-faint)}
+.me-url .mono{color:var(--fg-muted);overflow-wrap:anywhere}
+.me-url a{color:var(--link)}
+.me-foot{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--divider)}
+@media(max-width:639px){.me-actions{width:100%}.me-actions .status{flex-basis:100%}.me-actions .btn{flex:1}}

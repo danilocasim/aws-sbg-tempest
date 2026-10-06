@@ -1,0 +1,33 @@
+{
+  "name": "@tempest/admin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Admin app → admin.<domain>, behind Cloudflare Access (ADR-0008)",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "echo 'no unit tests yet (ui/db packages carry them)'"
+  },
+  "dependencies": {
+    "@tempest/db": "workspace:*",
+    "@tempest/email": "workspace:*",
+    "@tempest/ui": "workspace:*",
+    "next": "16.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@tempest/config": "workspace:*",
+    "@types/node": "24.19.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
+  }
+}

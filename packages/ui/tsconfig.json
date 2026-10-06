@@ -1,0 +1,5 @@
+{
+  "extends": "@tempest/config/tsconfig/base.json",
+  "compilerOptions": { "lib": ["dom", "dom.iterable", "ES2023"], "jsx": "preserve", "noEmit": true, "types": ["node", "react", "react-dom"] },
+  "include": ["src", "test", "vitest.config.ts"]
+}

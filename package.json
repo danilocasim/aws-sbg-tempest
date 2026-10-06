@@ -1,0 +1,26 @@
+{
+  "name": "tempest",
+  "private": true,
+  "version": "0.1.0",
+  "description": "AWS Student Builder Group – Tempest: public site, NFC member profiles, and admin app.",
+  "packageManager": "pnpm@9.15.9",
+  "engines": { "node": ">=24", "pnpm": ">=9" },
+  "scripts": {
+    "dev": "pnpm -r --parallel --filter './apps/*' dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "db:generate": "pnpm --filter @tempest/db db:generate",
+    "db:migrate": "pnpm --filter @tempest/db db:migrate",
+    "db:seed": "pnpm --filter @tempest/db db:seed",
+    "db:check": "pnpm --filter @tempest/db db:check",
+    "db:studio": "pnpm --filter @tempest/db db:studio",
+    "email:test": "pnpm --filter @tempest/email email:test",
+    "docker:build": "docker build -f docker/Dockerfile.web -t tempest-web . && docker build -f docker/Dockerfile.admin -t tempest-admin .",
+    "docker:up": "docker compose -f docker/compose.yaml up --build"
+  },
+  "devDependencies": {
+    "prettier": "3.9.9"
+  }
+}

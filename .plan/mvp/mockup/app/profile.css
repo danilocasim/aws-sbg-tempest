@@ -1,0 +1,23 @@
+/* Profile (card tap) page. One surface, one primary action, hairlines between groups. No gradients, no tilt, no sheen. */
+.profile-wrap{min-height:100dvh;display:grid;place-items:center;padding:1.5rem var(--gutter) 6rem}
+.profile-card{width:100%;max-width:440px;padding:1.75rem 1.5rem 1.25rem;border-radius:var(--r-lg);border:1px solid var(--border);background:var(--surface);box-shadow:var(--elev-1);display:flex;flex-direction:column;gap:1.25rem;text-align:left}
+.profile-head{display:flex;gap:1rem;align-items:center}
+.profile-head .avatar{border-color:var(--border-strong)}
+.profile-head .who{min-width:0;display:flex;flex-direction:column;gap:.2rem}
+.profile-card h1{font-size:1.5rem;line-height:1.15;overflow-wrap:anywhere}
+.profile-card .headline{color:var(--fg-muted);font-size:var(--fs-small)}
+.profile-card .role-line{margin-top:.15rem}
+.profile-card .bio{color:var(--fg-body);font-size:var(--fs-body);line-height:1.6}
+.links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--divider)}
+.link-row{display:flex;align-items:center;gap:.9rem;min-height:52px;padding:0 .25rem;border-bottom:1px solid var(--divider);color:var(--fg);font-weight:500;transition:color var(--dur-fast)}
+.link-row .ic{color:var(--fg-subtle);flex:none;transition:color var(--dur-fast)}
+.link-row span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.link-row .ext{margin-left:auto;flex:none;color:var(--fg-faint)}
+@media(hover:hover){.link-row:hover .ic{color:var(--fg)}.link-row[data-brand=linkedin]:hover .ic{color:#0a66c2}.link-row[data-brand=facebook]:hover .ic{color:#1877f2}.link-row[data-brand=web]:hover .ic{color:var(--link)}}
+.profile-actions{display:flex;gap:.25rem;margin:-.5rem 0 0 -12px}
+.profile-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1rem;padding-top:1rem;border-top:1px solid var(--divider);font-size:var(--fs-small);color:var(--fg-faint)}
+.profile-foot img{width:24px;height:24px;border-radius:50%}
+.profile-foot a{color:var(--fg-muted)}
+.profile-foot a:hover{color:var(--fg)}
+.inactive{max-width:440px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.inactive img{width:88px;height:88px;border-radius:50%;opacity:.85}

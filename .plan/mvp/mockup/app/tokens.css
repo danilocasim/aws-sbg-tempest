@@ -1,0 +1,51 @@
+/* Tempest design tokens — mirrors .plan/mvp/design-system.md */
+:root {
+  color-scheme: dark;
+  /* canvas */
+  --navy-950:#040615; --navy-900:#070718; --navy-800:#10111e; --navy-700:#121121; --navy-600:#282a36; --navy-500:#3a3d4d;
+  --nebula-violet:#342f57; --nebula-steel:#253144; --nebula-plum:#3c324c;
+  /* text */
+  --white:#ffffff; --text-100:#e0e9f7; --text-200:#d1d9e8; --text-300:#b6becc; --text-400:#8b93a7;
+  /* ember */
+  --ember-500:#f5a044; --ember-400:#ffb45f; --ember-600:#d98632; --ember-ink:#000017;
+  /* gold */
+  --gold-300:#ffd35e; --gold-600:#836954; --gold-ring:#f2b84b;
+  /* aurora */
+  --aurora-1:#87ccff; --aurora-2:#b4a5fa; --aurora-3:#eecba1;
+  /* dragon / halo */
+  --dragon-blue:#3b6fe0; --dragon-deep:#21498e; --dragon-cyan:#78e4f5; --dragon-violet:#402ea1; --halo-pink:#e88aa8; --logo-cyan:#98ecff;
+  /* status */
+  --info:#5aa9ff; --success:#4ade80; --warning:#ffd35e; --danger:#ff6b6b;
+
+  /* semantic */
+  --bg:var(--navy-950); --bg-band:var(--navy-900); --surface:var(--navy-800); --surface-glass:rgb(16 17 30 / .6);
+  --border:var(--navy-600); --border-strong:var(--navy-500); --divider:var(--navy-700);
+  --fg:var(--white); --fg-body:var(--text-100); --fg-muted:var(--text-200); --fg-subtle:var(--text-300); --fg-faint:var(--text-400);
+  --accent:var(--ember-500); --accent-hover:var(--ember-400); --accent-active:var(--ember-600); --accent-fg:var(--ember-ink);
+  --highlight:var(--gold-300); --highlight-bg:var(--nebula-plum); --highlight-border:var(--gold-600);
+  --gradient-aurora:linear-gradient(90deg,var(--aurora-1),var(--aurora-2) 55%,var(--aurora-3));
+  --gradient-halo:conic-gradient(from 180deg,var(--halo-pink),var(--dragon-violet),var(--dragon-cyan),var(--gold-ring),var(--halo-pink));
+  --glow-violet:radial-gradient(60% 60% at 0% 0%,var(--nebula-violet) 0%,transparent 70%);
+  --glow-steel:radial-gradient(50% 50% at 100% 40%,var(--nebula-steel) 0%,transparent 70%);
+  --focus-ring:0 0 0 3px rgb(135 204 255 / .55);
+  --link:var(--aurora-1);
+
+  /* type */
+  --font-display:"Space Grotesk",system-ui,sans-serif; --font-body:"Inter",system-ui,sans-serif; --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  --fs-display:clamp(2.25rem,1.5rem + 3.5vw,4.5rem); --fs-h1:clamp(2.25rem,1.75rem + 2vw,3.5rem); --fs-h2:clamp(1.75rem,1.5rem + 1vw,2.25rem);
+  --fs-h3:1.375rem; --fs-lead:1.25rem; --fs-body:1rem; --fs-small:.875rem; --fs-eyebrow:.75rem; --fs-stat:clamp(2rem,1.5rem + 1.5vw,2.5rem);
+
+  /* shape / elevation */
+  --r-sm:8px; --r-md:16px; --r-lg:24px; --r-pill:9999px;
+  --elev-1:0 1px 0 rgb(255 255 255 / .04) inset,0 8px 24px rgb(0 0 0 / .35);
+  --elev-accent:0 8px 30px rgb(245 160 68 / .35);
+  --elev-aurora:0 0 40px rgb(135 204 255 / .25);
+
+  /* motion */
+  --dur-fast:150ms; --dur-base:250ms; --dur-slow:500ms; --dur-hero:900ms;
+  --ease-out:cubic-bezier(.16,1,.3,1); --ease-in-out:cubic-bezier(.65,0,.35,1); --ease-spring:cubic-bezier(.34,1.56,.64,1);
+
+  --container:1200px; --gutter:16px; --nav-h:72px;
+}
+@media (min-width:768px){:root{--gutter:24px}}
+@media (min-width:1024px){:root{--gutter:40px}}

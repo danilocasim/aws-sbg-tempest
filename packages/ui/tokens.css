@@ -1,0 +1,97 @@
+/* Tempest design tokens — the only source of color, type, radius, elevation, motion.
+   Mirrors .plan/mvp/design-system.md §2–5. Raw hex anywhere else in app code is a review failure. */
+:root {
+  color-scheme: dark;
+
+  /* ===== 2.1 primitives ===== */
+  /* canvas */
+  --navy-950: #040615; --navy-900: #070718; --navy-800: #10111e; --navy-700: #121121; --navy-600: #282a36; --navy-500: #3a3d4d;
+  /* nebula glows (edge washes, never text) */
+  --nebula-violet: #342f57; --nebula-steel: #253144; --nebula-plum: #3c324c;
+  /* text */
+  --white: #ffffff; --text-100: #e0e9f7; --text-200: #d1d9e8; --text-300: #b6becc; --text-400: #8b93a7;
+  /* ember (primary action) */
+  --ember-500: #f5a044; --ember-400: #ffb45f; --ember-600: #d98632; --ember-ink: #000017;
+  /* gold (badges, rings) */
+  --gold-300: #ffd35e; --gold-600: #836954; --gold-ring: #f2b84b;
+  /* aurora (the one gradient) */
+  --aurora-1: #87ccff; --aurora-2: #b4a5fa; --aurora-3: #eecba1;
+  /* dragon / halo (illustration only) */
+  --dragon-blue: #3b6fe0; --dragon-deep: #21498e; --dragon-cyan: #78e4f5; --dragon-violet: #402ea1; --halo-pink: #e88aa8; --logo-cyan: #98ecff;
+  /* status */
+  --info: #5aa9ff; --success: #4ade80; --warning: #ffd35e; --danger: #ff6b6b;
+
+  /* ===== 2.2 semantic ===== */
+  --bg: var(--navy-950);
+  --bg-band: var(--navy-900);
+  --surface: var(--navy-800);
+  --surface-glass: rgb(16 17 30 / 0.6);
+  --border: var(--navy-600);
+  --border-strong: var(--navy-500);
+  --divider: var(--navy-700);
+
+  --fg: var(--white);
+  --fg-body: var(--text-100);
+  --fg-muted: var(--text-200);
+  --fg-subtle: var(--text-300);
+  --fg-faint: var(--text-400);
+
+  --accent: var(--ember-500);
+  --accent-hover: var(--ember-400);
+  --accent-active: var(--ember-600);
+  --accent-fg: var(--ember-ink);
+
+  --highlight: var(--gold-300);
+  --highlight-bg: var(--nebula-plum);
+  --highlight-border: var(--gold-600);
+
+  --gradient-aurora: linear-gradient(90deg, var(--aurora-1), var(--aurora-2) 55%, var(--aurora-3));
+  --gradient-halo: conic-gradient(from 180deg, var(--halo-pink), var(--dragon-violet), var(--dragon-cyan), var(--gold-ring), var(--halo-pink));
+  --glow-violet: radial-gradient(60% 60% at 0% 0%, var(--nebula-violet) 0%, transparent 70%);
+  --glow-steel: radial-gradient(50% 50% at 100% 40%, var(--nebula-steel) 0%, transparent 70%);
+
+  --focus-ring: 0 0 0 3px rgb(135 204 255 / 0.55);
+  --link: var(--aurora-1);
+
+  /* ===== 3 typography (font families come from next/font; the quoted names are the fallback) ===== */
+  --font-display: var(--font-space-grotesk, "Space Grotesk"), system-ui, sans-serif;
+  --font-body: var(--font-inter, "Inter"), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains, "JetBrains Mono"), ui-monospace, monospace;
+
+  --fs-display: clamp(2.25rem, 1.5rem + 3.5vw, 4.5rem);
+  --fs-h1: clamp(2.25rem, 1.75rem + 2vw, 3.5rem);
+  --fs-h2: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+  --fs-h3: 1.375rem;
+  --fs-lead: 1.25rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.75rem;
+  --fs-stat: clamp(2rem, 1.5rem + 1.5vw, 2.5rem);
+
+  /* ===== 4 space, shape, elevation ===== */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px; --space-8: 32px;
+  --space-12: 48px; --space-16: 64px; --space-20: 80px; --space-24: 96px; --space-32: 128px;
+  --section-pt: clamp(3.5rem, 6vw, 6rem);
+  --section-pb: clamp(2rem, 4vw, 4rem);
+  --container: 1200px;
+  --gutter: 16px;
+  --nav-h: 72px;
+
+  --r-sm: 8px; --r-md: 16px; --r-lg: 24px; --r-pill: 9999px;
+
+  --elev-1: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 8px 24px rgb(0 0 0 / 0.35);
+  --elev-accent: 0 8px 30px rgb(245 160 68 / 0.35);
+  --elev-aurora: 0 0 40px rgb(135 204 255 / 0.25);
+  --card-top-highlight: rgb(255 255 255 / 0.06);
+
+  /* ===== 5 motion ===== */
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-slow: 500ms;
+  --dur-hero: 900ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@media (min-width: 768px) { :root { --gutter: 24px; } }
+@media (min-width: 1024px) { :root { --gutter: 40px; } }

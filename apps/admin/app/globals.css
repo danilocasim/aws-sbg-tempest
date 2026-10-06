@@ -1,0 +1,11 @@
+@import "@tempest/ui/styles.css";
+@source "../../../packages/ui/src";
+
+/* §8 admin: same tokens, no decoration, denser. */
+.admin { display: grid; grid-template-columns: 1fr; min-height: 100dvh; }
+.admin-side { background: var(--bg-band); border-right: 1px solid var(--divider); padding: var(--space-6) var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
+.admin-side nav a { display: block; padding: var(--space-2) var(--space-3); border-radius: var(--r-sm); color: var(--fg-muted); font-size: var(--fs-small); }
+.admin-side nav a:hover, .admin-side nav a[aria-current="page"] { color: var(--fg); background: var(--surface); }
+.admin-main { padding: var(--space-8) var(--gutter); font-size: var(--fs-small); }
+.admin-main h1 { font-size: var(--fs-h2); margin-bottom: var(--space-6); }
+@media (min-width: 1024px) { .admin { grid-template-columns: 240px 1fr; } }

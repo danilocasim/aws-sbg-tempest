@@ -1,0 +1,80 @@
+# Local stack mirroring Coolify: `docker compose -f docker/compose.yaml up --build`
+# web → http://localhost:3000 · admin → http://localhost:3001 · mailpit UI → http://localhost:8025 · Postgres → localhost:5433
+# Ports taken? PG_PORT=5434 WEB_PORT=3200 ADMIN_PORT=3201 docker compose -f docker/compose.yaml up
+name: tempest
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: tempest
+      POSTGRES_PASSWORD: tempest
+      POSTGRES_DB: tempest
+    ports: ["${PG_PORT:-5433}:5432"]  # host port; override with PG_PORT when 5433 is taken
+    volumes: [pgdata:/var/lib/postgresql]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tempest -d tempest"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports: ["8025:8025", "1025:1025"]
+
+  migrate:
+    build: { context: .., dockerfile: docker/Dockerfile.web }
+    image: tempest-web
+    command: ["node", "/app/migrate.mjs"]
+    environment: { DATABASE_URL: postgres://tempest:tempest@postgres:5432/tempest }
+    depends_on:
+      postgres: { condition: service_healthy }
+
+  web:
+    image: tempest-web
+    environment:
+      DATABASE_URL: postgres://tempest:tempest@postgres:5432/tempest
+      PUBLIC_BASE_URL: http://localhost:3000
+      SMTP_URL: smtp://mailpit:1025
+      EMAIL_FROM: "Tempest <no-reply@localhost>"
+      AUTH_SECRET: dev-only-not-a-secret
+    ports: ["${WEB_PORT:-3000}:3000"]
+    volumes: [uploads:/app/uploads]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+
+  admin:
+    build: { context: .., dockerfile: docker/Dockerfile.admin }
+    image: tempest-admin
+    environment:
+      DATABASE_URL: postgres://tempest:tempest@postgres:5432/tempest
+      PUBLIC_BASE_URL: http://localhost:3000
+      ADMIN_BASE_URL: http://localhost:3001
+      SMTP_URL: smtp://mailpit:1025
+      EMAIL_FROM: "Tempest <no-reply@localhost>"
+      AUTH_SECRET: dev-only-not-a-secret
+    ports: ["${ADMIN_PORT:-3001}:3001"]
+    volumes: [uploads:/app/uploads]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+
+  backup:
+    profiles: [ops]
+    build: { context: backup }
+    image: tempest-backup
+    environment:
+      DATABASE_URL: postgres://tempest:tempest@postgres:5432/tempest
+      RCLONE_REMOTE: ${RCLONE_REMOTE:-}
+      AGE_PUBLIC_KEY: ${AGE_PUBLIC_KEY:-}
+      BACKUP_RETENTION_DAYS: ${BACKUP_RETENTION_DAYS:-30}
+      BACKUP_CRON: ${BACKUP_CRON:-10 19 * * *}  # 19:10 UTC = 03:10 Asia/Manila
+    volumes:
+      - uploads:/app/uploads:ro
+      - backups:/backups
+      - ${RCLONE_CONFIG_DIR:-./backup/keys}:/root/.config/rclone:ro
+    depends_on:
+      postgres: { condition: service_healthy }
+
+volumes:
+  pgdata:
+  uploads:
+  backups:

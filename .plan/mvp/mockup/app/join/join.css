@@ -1,0 +1,14 @@
+/* Join page: intro + steps on the left, form on the right. One column under lg. */
+.join{display:grid;gap:2.5rem;max-width:1080px;margin:0 auto;grid-template-columns:minmax(0,1fr)}
+.join-aside{display:contents}
+.join-head{max-width:none;margin-bottom:0;gap:.9rem}
+.join-head h1{margin-top:.25rem}
+.join-window{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .75rem;font-size:var(--fs-small)!important;color:var(--fg-muted)!important;margin-top:.25rem}
+.join-window .status{font-size:var(--fs-small)}
+.join-form{order:2;min-width:0}
+.join-how{order:3}
+@media(min-width:1024px){
+  .join{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:3rem 5rem;align-items:start}
+  .join-aside{display:flex;flex-direction:column;gap:2rem;position:sticky;top:calc(var(--nav-h) + 2rem)}
+  .join-form{order:0}
+}

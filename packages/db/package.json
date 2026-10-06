@@ -1,0 +1,39 @@
+{
+  "name": "@tempest/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Drizzle schema, migrations, seed, and query helpers. The single schema definition for web and admin (ADR-0008).",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema.ts",
+    "./health": "./src/health.ts"
+  },
+  "scripts": {
+    "build": "esbuild src/migrate.ts --bundle --platform=node --format=esm --target=node24 --outfile=dist/migrate.mjs --banner:js=\"import { createRequire } from 'node:module'; const require = createRequire(import.meta.url);\"",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx src/migrate.ts",
+    "db:seed": "tsx src/seed.ts",
+    "db:check": "drizzle-kit check",
+    "db:studio": "drizzle-kit studio",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.45.3",
+    "postgres": "3.4.9",
+    "uuid": "14.0.2"
+  },
+  "devDependencies": {
+    "@tempest/config": "workspace:*",
+    "@types/node": "24.19.1",
+    "dotenv": "18.0.5",
+    "drizzle-kit": "0.31.11",
+    "esbuild": "0.28.2",
+    "eslint": "9.39.5",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.0.3"
+  }
+}

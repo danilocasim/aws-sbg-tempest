@@ -1,0 +1,81 @@
+/* Entry stylesheet for both apps: tokens → component styles → Tailwind utilities.
+   Tailwind v4 "preset": the @theme block maps every token to a utility namespace
+   (bg-surface, text-fg-muted, rounded-pill, ease-out, font-display, shadow-elev-1 …). */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "./tokens.css" layer(theme);
+@import "./ui.css" layer(components);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme inline {
+  --color-*: initial;
+  --color-bg: var(--bg);
+  --color-bg-band: var(--bg-band);
+  --color-surface: var(--surface);
+  --color-surface-glass: var(--surface-glass);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-divider: var(--divider);
+  --color-fg: var(--fg);
+  --color-fg-body: var(--fg-body);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-fg-faint: var(--fg-faint);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-active: var(--accent-active);
+  --color-accent-fg: var(--accent-fg);
+  --color-highlight: var(--highlight);
+  --color-highlight-bg: var(--highlight-bg);
+  --color-highlight-border: var(--highlight-border);
+  --color-link: var(--link);
+  --color-aurora-1: var(--aurora-1);
+  --color-aurora-2: var(--aurora-2);
+  --color-aurora-3: var(--aurora-3);
+  --color-logo-cyan: var(--logo-cyan);
+  --color-info: var(--info);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-white: var(--white);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+  --font-sans: var(--font-body);
+
+  --text-display: var(--fs-display);
+  --text-h1: var(--fs-h1);
+  --text-h2: var(--fs-h2);
+  --text-h3: var(--fs-h3);
+  --text-lead: var(--fs-lead);
+  --text-body: var(--fs-body);
+  --text-small: var(--fs-small);
+  --text-eyebrow: var(--fs-eyebrow);
+  --text-stat: var(--fs-stat);
+
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-pill: var(--r-pill);
+
+  --shadow-elev-1: var(--elev-1);
+  --shadow-elev-accent: var(--elev-accent);
+  --shadow-elev-aurora: var(--elev-aurora);
+  --shadow-focus-ring: var(--focus-ring);
+
+  --ease-out: var(--ease-out);
+  --ease-in-out: var(--ease-in-out);
+  --ease-spring: var(--ease-spring);
+  --duration-fast: var(--dur-fast);
+  --duration-base: var(--dur-base);
+  --duration-slow: var(--dur-slow);
+  --duration-hero: var(--dur-hero);
+
+  --background-image-aurora: var(--gradient-aurora);
+  --background-image-halo: var(--gradient-halo);
+
+  --container-content: var(--container);
+}

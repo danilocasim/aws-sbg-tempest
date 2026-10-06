@@ -1,0 +1,20 @@
+{
+  "name": "@tempest/config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared tsconfig and eslint presets.",
+  "exports": {
+    "./tsconfig/base.json": "./tsconfig/base.json",
+    "./tsconfig/nextjs.json": "./tsconfig/nextjs.json",
+    "./tsconfig/node.json": "./tsconfig/node.json",
+    "./eslint/base": "./eslint/base.js",
+    "./eslint/next": "./eslint/next.js"
+  },
+  "dependencies": {
+    "@eslint/js": "9.39.5",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.8",
+    "typescript-eslint": "8.71.0"
+  }
+}
